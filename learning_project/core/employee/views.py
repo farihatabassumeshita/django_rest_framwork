@@ -50,7 +50,7 @@ from .serializers import EmployeeSerializer
 #         employee.delete()
 #         return Response(status=status.HTTP_204_NO_CONTENT)
 
-#GenericView(Mixin)
+#GenericView(Mixins)
 class Employees(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
