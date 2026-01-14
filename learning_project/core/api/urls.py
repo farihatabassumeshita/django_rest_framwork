@@ -1,6 +1,7 @@
 from home.views import index, person_list, student_view, student_details
 #from employee.views import Employees, EmployeeDetails
 from employee.views import EmployeeViewSet
+from blog.views import BlogsView, CommentsView, CommentsDetails, BlogsDetails
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
@@ -19,6 +20,12 @@ urlpatterns = [
     # path('employee/<int:pk>/', EmployeeDetails.as_view()),
 
     #viewset
-    path('', include(router.urls))
+    path('', include(router.urls)),
+
+    path('blogs/', BlogsView.as_view()),
+    path('comments/', CommentsView.as_view()),
+
+    path('blogs/<int:pk>/', BlogsDetails.as_view()),
+    path('comments/<int:pk>/', CommentsDetails.as_view()),
 
 ]
