@@ -6,6 +6,7 @@ from rest_framework import mixins, generics, viewsets
 from django.http import Http404
 from .models import Employee
 from .serializers import EmployeeSerializer
+from .paginations import CustomPagination
 
 # Create your views here.
 
@@ -116,4 +117,5 @@ from .serializers import EmployeeSerializer
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+    pagination_class = CustomPagination
  
