@@ -7,6 +7,7 @@ from django.http import Http404
 from .models import Employee
 from .serializers import EmployeeSerializer
 from .paginations import CustomPagination
+from .filters import EmployeeFilter
 
 # Create your views here.
 
@@ -118,4 +119,6 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     pagination_class = CustomPagination
+    #filterset_fields = ['emp_designation'] #Global fielter
+    filterset_class = EmployeeFilter
  
