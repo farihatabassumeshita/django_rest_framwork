@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.response import Response
+from rest_framework.filters import SearchFilter
 from rest_framework import generics
 from .models import Blog, Comment
 from .serializers import BlogSerializer, CommentSerializer
@@ -9,6 +10,8 @@ from .serializers import BlogSerializer, CommentSerializer
 class BlogsView(generics.ListCreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['blog_title']
 
 class CommentsView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
